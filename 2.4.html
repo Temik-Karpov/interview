@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.4</title>
+    <script type="text/javascript">
+        var store={
+          store:[],
+          count:0,
+          save:function (param){
+              this.count++;
+              this.store[this.count] = param;
+        } ,
+            undo:function()
+            {
+                if(this.count > 1)
+                {
+                    return this.store[--this.count];
+                }
+                else
+                {
+                    return false;
+                }
+            },
+        }
+
+        function change(){
+            store.save(document.getElementById("text").value);
+        }
+
+        function clickButton(){
+            let d = store.undo();
+            if(d != false)
+            {
+                document.getElementById("text").value = d;
+            }
+        }
+    </script>
+</head>
+<body>
+<from>
+  <label>Enter text:</label>
+    <input type="text" id="text" onchange="javascript:change();"><br>
+    <button type="button" name="undo" onclick="javascript:clickButton();">Undo</button>
+</from>
+</body>
+</html>

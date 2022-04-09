@@ -9,15 +9,21 @@
             var ul = document.getElementById("ul");
             var lis = ul.getElementsByTagName("li");
             for(var i = 0; i < lis.length; i++) {
-                if(lis[i].querySelector('ul'))
+                if(lis[i].querySelector('ul') != null)
                 {
-                    lis[i].style.listStyleImage = 'url("./plus.png")';
+                    lis[i].style.listStyleImage = 'url("./plus.png")';  //затрудения с изменением маркера одного элемента списка
                 }
             }
 
-            function aClick() {
-
-            }
+            var a = document.querySelectorAll('a');
+            [].forEach.call( a, function aClick(el) {
+                el.onclick = function(e) {
+                       if(el.parentNode.querySelector('ul')) {
+                           return false;
+                       }
+                       return true;
+                }
+            });
         }
     </script>
 </head>
@@ -30,17 +36,6 @@
             <li><a href="#">Ссылка 2.2</a>
                 <ul>
                     <li><a href="#">Ссылка 2.2.1</a></li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li><a href="#">Ссылка 3</a></li>
-    <li><a href="#">Ссылка 4</a>
-        <ul>
-            <li><a href="#">Ссылка 4.1</a></li>
-            <li><a href="#">Ссылка 4.2</a>
-                <ul>
-                    <li><a href="#">Ссылка 4.2.1</a></li>
                 </ul>
             </li>
         </ul>

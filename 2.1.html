@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.1</title>
+    <script type="text/javascript">
+        function Row() {
+            document.getElementById('main').className = 'row';
+        }
+
+        function Columns() {
+            document.getElementById('main').className = 'columns';
+        }
+
+    </script>
+    <style>
+        .columns {
+            column-gap: 5em;
+        }
+
+        .row{
+            max-width:600px;
+            flex-wrap:wrap;
+        }
+
+        .item {
+            display: inline-block;
+            padding: 5em;
+            margin-bottom: 1em;
+            width: 100%;
+            box-sizing: border-box;
+            background: #9F1D35;
+        }
+
+        @media screen and (min-width: 768px) {
+            .columns {
+                column-count: 1;
+            }
+        }
+
+        @media screen and (min-width: 1024px) {
+            .columns {
+                column-count: 2;
+            }
+        }
+
+        @media screen and (min-width: 1920px) {
+            .columns {
+                column-count: 3;
+            }
+        }
+
+        button{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="columns" id="main">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+</div>
+
+<button onclick="javascript:Row();">List</button>
+<button onclick="javascript:Columns();">Columns</button>
+</body>
+</html>
